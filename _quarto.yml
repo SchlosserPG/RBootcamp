@@ -1,0 +1,29 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "MSBA R Bootcamp"
+  author: "Pamela Schlosser"
+  date: "5/17/2024"
+  chapters:
+    - index.qmd
+    - introR.qmd
+    - descriptives.qmd
+    - dataprep.qmd
+    - dataviz.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    css: styles.css
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+
+
+
