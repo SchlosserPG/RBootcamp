@@ -193,10 +193,9 @@ mean(GrowthFund)
 
 -   The mode is another measure of central location.
 -   The mode is the most frequently occurring value in a data set.
--   The mode is useful in summarizing categorical data.
+-   The mode is useful in summarizing categorical data but can also be used to summarize quantitative data.
 -   A data set can have no mode, one mode (unimodal), two modes (bimodal) or many modes (multimodal).
 -   The mode is less useful when there are more than three modes.
--   The mode is useful summary for a categorical variable.
 
 #### Example of Function with Salary Variable
 
@@ -374,6 +373,8 @@ ggplot(HousePrice, aes(x=HousePrice))+geom_histogram(binwidth = 100, boundary= 3
 
 customers <- read.csv("data/customers.csv")
 summary(customers$Spending, na.rm=TRUE) #mean and median
+mean(customers$Spending, na.rm=TRUE) #mean by itself
+median(customers$Spending, na.rm=TRUE) #median by itself
 ### Spread to Report with the Mean
 sd(customers$Spending, na.rm=TRUE) 
 var(customers$Spending, na.rm=TRUE)
@@ -455,8 +456,6 @@ kurtosis(customers$Orders)
 ### Spread to Report with the Mode
 
 -   While there is no great function to test for spread, you can look at the data and see if it is concentrated around 1 or 2 frequencies. If it is, then the spread is distorted towards those high frequency values.
-
-## Using AI
 
 ## Using AI
 

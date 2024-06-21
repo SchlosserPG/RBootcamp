@@ -12,6 +12,7 @@ book:
     - descriptives.qmd
     - dataprep.qmd
     - dataviz.qmd
+    - probability.qmd
     - summary.qmd
     - references.qmd
 
