@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 ### At a Glance
 
 -   In order to succeed in this lesson, you will need to start by having both R and RStudio downloaded. Then, the only way to learn R is to use it in various ways and to practice as much as you can.
--   It is also important to note that this is a statistics class and that R is a statistical computing software. Because of that, we need to not only pay attention to what we are typing in, but understand why we are typing it in the ways suggested, and also how we could do it differently to get similar if not the same results. We also need to understand what important information we can pull from what we have done. Finally, to succeed in this section, we need to begin to understand how to clean data, which is a very important step for data analysts. Specifically, we learn how to count, sort, and handle missing data.
+-   It is also important to note that this is a statistics class and that R is a statistical computing software. Because of that, we need to not only pay attention to what we are typing in, but understand why we are typing it in the ways suggested, and also how we could do it differently to get similar if not the same results. 
 
 ### Lesson Objectives
 
@@ -25,7 +25,6 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 -   Set up R and R Studio.
 -   Use basic Built-in Functions in R.
 -   Enter and load data into R.
--   Identify and treat missing values.
 
 ### Consider While Reading
 
