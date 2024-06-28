@@ -60,7 +60,7 @@ output: html_document
 
 
 ## Visualization and Plots
-* RMD files can include visualizations and plots. For example, you can create and embed a plot using the ggplot2 package
+* RMD files can include visualizations and plots. For example, you can create and embed a plot using the ggplot2 package.
 
 library(ggplot2)
 ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()

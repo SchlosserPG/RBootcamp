@@ -564,7 +564,7 @@
     "href": "rmarkdown.html#visualization-and-plots",
     "title": "Intro to RMarkdown",
     "section": "7.5 Visualization and Plots",
-    "text": "7.5 Visualization and Plots\n\nRMD files can include visualizations and plots. For example, you can create and embed a plot using the ggplot2 package\n\nlibrary(ggplot2) ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()\n\nlibrary(ggplot2)\nggplot(mpg, aes(x = displ, y = hwy)) + geom_point()",
+    "text": "7.5 Visualization and Plots\n\nRMD files can include visualizations and plots. For example, you can create and embed a plot using the ggplot2 package.\n\nlibrary(ggplot2) ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()\n\nlibrary(ggplot2)\nggplot(mpg, aes(x = displ, y = hwy)) + geom_point()",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Intro to RMarkdown</span>"
     ]
