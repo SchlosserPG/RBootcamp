@@ -13,6 +13,7 @@ book:
     - dataprep.qmd
     - dataviz.qmd
     - probability.qmd
+    - rmarkdown.qmd
     - summary.qmd
     - references.qmd
 

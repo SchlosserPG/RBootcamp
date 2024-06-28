@@ -1,6 +1,6 @@
 # Introduction to R and RStudio
 
--   The goal of this lesson is to introduce you to R and RStudio while teaching you how to perform data preparation using these tools. In this part, we will go over forming an understanding of statistics, learning about observations and variables, and being able to move around and get comfortable with R. I will also teach you how use and load data while also performing data preparation. This includes entering and loading information into R, identifying and treating missing values in a data set, and building a basic bar chart.
+-   The goal of this lesson is to introduce you to R and RStudio while teaching you how to perform data preparation using these tools. In this part, we will go over forming an understanding of statistics, learning about observations and variables, and being able to move around and get comfortable with R. I will also teach you how use and load data. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRUE, message=FALSE, warning=FALSE)
@@ -426,7 +426,6 @@ seq(0,30)
 y <- 10:20
 sort(y)
 sort(y, decreasing=FALSE)
-
 ```
 
 ## Saving

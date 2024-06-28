@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Pamela Schlosser">
-<meta name="dcterms.date" content="2024-05-17">
+<meta name="dcterms.date" content="2024-08-09">
 
-<title>MSBA R Bootcamp</title>
+<title>MSBA R Bootcamp - 7&nbsp; Introduction to RMarkdown</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +66,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./introR.html" rel="next">
+<link href="./summary.html" rel="next">
+<link href="./probability.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,35 +105,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -112,7 +118,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and R Studio</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rmarkdown.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intro to RMarkdown</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -139,7 +145,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Installing R and R Studio</span></span></a>
   </div>
 </li>
@@ -175,8 +181,8 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rmarkdown.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">My Analysis</span></span></a>
+  <a href="./rmarkdown.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intro to RMarkdown</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,22 +207,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installing-r-and-r-studio" id="toc-installing-r-and-r-studio" class="nav-link active" data-scroll-target="#installing-r-and-r-studio"><span class="header-section-number">1</span> Installing R and R Studio</a>
-  <ul class="collapse">
-  <li><a href="#installing-r-on-windows" id="toc-installing-r-on-windows" class="nav-link" data-scroll-target="#installing-r-on-windows"><span class="header-section-number">1.0.1</span> Installing R on Windows</a></li>
-  <li><a href="#downloading-rstudio-for-pc" id="toc-downloading-rstudio-for-pc" class="nav-link" data-scroll-target="#downloading-rstudio-for-pc"><span class="header-section-number">1.0.2</span> Downloading RStudio For PC</a></li>
-  <li><a href="#take-your-first-look-at-r" id="toc-take-your-first-look-at-r" class="nav-link" data-scroll-target="#take-your-first-look-at-r"><span class="header-section-number">1.1</span> Take Your First Look at R</a></li>
-  <li><a href="#creating-a-project" id="toc-creating-a-project" class="nav-link" data-scroll-target="#creating-a-project"><span class="header-section-number">1.2</span> Creating a Project</a></li>
-  <li><a href="#r-script-files-myfirstrscript.r" id="toc-r-script-files-myfirstrscript.r" class="nav-link" data-scroll-target="#r-script-files-myfirstrscript.r"><span class="header-section-number">1.3</span> R Script files (MyFirstRscript.R)</a></li>
-  <li><a href="#using-r-more-effectively" id="toc-using-r-more-effectively" class="nav-link" data-scroll-target="#using-r-more-effectively"><span class="header-section-number">1.4</span> Using R More Effectively</a>
-  <ul class="collapse">
-  <li><a href="#setting-options-to-your-liking" id="toc-setting-options-to-your-liking" class="nav-link" data-scroll-target="#setting-options-to-your-liking"><span class="header-section-number">1.4.1</span> Setting Options to Your Liking</a></li>
-  <li><a href="#quick-keys-in-r" id="toc-quick-keys-in-r" class="nav-link" data-scroll-target="#quick-keys-in-r"><span class="header-section-number">1.4.2</span> Quick Keys in R</a></li>
-  <li><a href="#getting-help-in-r" id="toc-getting-help-in-r" class="nav-link" data-scroll-target="#getting-help-in-r"><span class="header-section-number">1.4.3</span> Getting Help in R</a></li>
-  </ul></li>
-  <li><a href="#accessing-data-files-for-the-book" id="toc-accessing-data-files-for-the-book" class="nav-link" data-scroll-target="#accessing-data-files-for-the-book"><span class="header-section-number">1.5</span> Accessing Data Files for the Book</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">1.6</span> Summary</a></li>
-  </ul></li>
+  <li><a href="#yaml-header" id="toc-yaml-header" class="nav-link active" data-scroll-target="#yaml-header"><span class="header-section-number">7.1</span> yaml Header</a></li>
+  <li><a href="#markdown-text" id="toc-markdown-text" class="nav-link" data-scroll-target="#markdown-text"><span class="header-section-number">7.2</span> markdown Text</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">7.3</span> Code Chunks</a></li>
+  <li><a href="#output-formats" id="toc-output-formats" class="nav-link" data-scroll-target="#output-formats"><span class="header-section-number">7.4</span> Output Formats</a></li>
+  <li><a href="#visualization-and-plots" id="toc-visualization-and-plots" class="nav-link" data-scroll-target="#visualization-and-plots"><span class="header-section-number">7.5</span> Visualization and Plots</a></li>
   </ul>
 </nav>
     </div>
@@ -225,7 +220,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">MSBA R Bootcamp</h1>
+<h1 class="title">Intro to RMarkdown</h1>
 </div>
 
 
@@ -242,7 +237,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 17, 2024</p>
+      <p class="date">2024-08-09</p>
     </div>
   </div>
   
@@ -254,204 +249,97 @@ window.Quarto = {
 </header>
 
 
-<section id="installing-r-and-r-studio" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Installing R and R Studio</h1>
-<section id="installing-r-on-windows" class="level3" data-number="1.0.1">
-<h3 data-number="1.0.1" class="anchored" data-anchor-id="installing-r-on-windows"><span class="header-section-number">1.0.1</span> Installing R on Windows</h3>
 <ul>
-<li>Open an internet browser and go to <a href="https://www.r-project.org/">https://www.r-project.org/</a></li>
-<li>Click CRAN hyperlink underneath Download on the left.</li>
-<li>Select a CRAN location (a mirror site) and click the corresponding link. I selected O-cloud. This brings you to the following link: <a href="https://cloud.r-project.org/">https://cloud.r-project.org/</a></li>
-<li>Click on the “Download R for Windows” link at the top of the page if you have a Windows computer.<br>
-</li>
-<li>Click on the “install R for the first time” link at the top of the page.</li>
-<li>Click “Download R for Windows” and save the executable file somewhere on your computer.</li>
-<li>Run the .exe file</li>
-<li>Accept all defaults and follow the installation instructions</li>
-<li>Now that R is installed, you need to download and install RStudio.</li>
-</ul>
-</section>
-<section id="downloading-rstudio-for-pc" class="level3" data-number="1.0.2">
-<h3 data-number="1.0.2" class="anchored" data-anchor-id="downloading-rstudio-for-pc"><span class="header-section-number">1.0.2</span> Downloading RStudio For PC</h3>
+<li><p>The goal of this lesson is to introduce you to RMarkdown and teach you how to format your output.</p></li>
+<li><p>R Markdown (RMD) files are a versatile format that combines plain text, code, and output to create dynamic and reproducible documents.</p></li>
+<li><p>Benefits of Using RMD Files:</p>
 <ul>
-<li>Go to the following URL: <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a><br>
-</li>
-<li>Click the Download button for Install RStudio.</li>
-<li>It should recognize your operating system. If you see different an Installers for Supported Platforms section, click the version that is appropriate for your operating system. When the download is complete, run the install program, accepting all defaults.</li>
-<li>Note, RStudio might conflict with some Mac antivirus programs. Ensure your antivirus is not blocking it from installing. Only worry about this if you have difficulty installing the program.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/RStudio.png" title="RStudio" class="img-fluid figure-img"></p>
-<figcaption>RStudio</figcaption>
-</figure>
-</div>
-</section>
-<section id="take-your-first-look-at-r" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="take-your-first-look-at-r"><span class="header-section-number">1.1</span> Take Your First Look at R</h2>
-<ul>
-<li>On the right, two windows, each with tabs
-<ul>
-<li>There are many ways to customize the look of RStudio for accessibility purposes with a couple being the following:
-<ul>
-<li>You can resize the windows using the splitters.</li>
-<li>You can maximize/restore the windows within the left/right panels using the familiar Windows controls in the upper-right of each window.</li>
+<li>Reproducibility: Combining code and output ensures that the document is reproducible. Any changes in the data or analysis can be quickly updated.</li>
+<li>Integration: RMD files seamlessly integrate with R, allowing you to run and display results from your analysis within the same document.</li>
+<li>Flexibility: You can produce various types of reports, including static documents and dynamic documents.</li>
+<li>Collaboration: Being that RMD files are plain text, they are easy to share and version control with tools like Git.</li>
 </ul></li>
-</ul></li>
-<li>On the left, the Console Window reproduces the R environment.
+<li><p>RMD files have many options, but generally are composed of the following:</p>
 <ul>
-<li>Observe the command line with the <span class="math inline">\(&gt;\)</span> symbol.</li>
+<li>yaml Header</li>
+<li>markdown Text</li>
+<li>Code Chunks</li>
+<li>Output Formats</li>
+<li>Visualization and Plots</li>
 </ul></li>
+<li><p>A full guide is available at <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf</a></p></li>
+</ul>
+<section id="yaml-header" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="yaml-header"><span class="header-section-number">7.1</span> yaml Header</h2>
+<ul>
+<li>The YAML header is located at the beginning of the RMD file and contains metadata about the document, such as the title, author, date, and output format. Here is an example of a YAML header:</li>
+</ul>
+</section>
+<section id="markdown-text" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="markdown-text"><span class="header-section-number">7.2</span> markdown Text</h2>
+<ul>
+<li>Markdown is a lightweight markup language with plain text formatting syntax. In an RMD file, you use Markdown to format the text, create lists, headers, links, and more. For example:</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Pictures/Ch0/Console.png" title="Screenshot of Console" class="img-fluid figure-img"></p>
-<figcaption>Console</figcaption>
+<p><img src="Pictures/RMD/markdownStyles.png" title="Styles" class="img-fluid figure-img"></p>
+<figcaption>Styles Example</figcaption>
 </figure>
 </div>
 </section>
-<section id="creating-a-project" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="creating-a-project"><span class="header-section-number">1.2</span> Creating a Project</h2>
+<section id="code-chunks" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">7.3</span> Code Chunks</h2>
 <ul>
-<li>The RStudio project file is a file that sits in the root directory, with the extension .Rproj. When your RStudio session is running through the project file (.Rproj), the current working directory points to the root folder where that .Rproj file is saved.</li>
-<li>Open up R Studio and Let’s Take a look around.</li>
-<li>Start by creating a project for our class. Projects are great because they aid in your organization technique.</li>
-<li>You will find that some professors are not insistent on making a project for their class, but it is helpful to still do to organize your materials. You will have a lot of code in this class, so it is good practice to keep everything organized!</li>
-<li>To create a project click <span class="math inline">\(File &gt; New Project - New Directory &gt; New Project\)</span> and save your project to a place on your computer (not the cloud).</li>
+<li>Code chunks allow you to embed R (or other languages) code within the document. These chunks are executed when the document is rendered, and their output is included in the final document. Code chunks are defined with triple backticks and the language, like this:</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Pictures/Ch0/CreateProject.png" title="Screenshot of Create Project in R Studio" class="img-fluid figure-img"></p>
-<figcaption>CreateProject</figcaption>
+<p><img src="Pictures/RMD/codechunk.png" title="Code Chunk" class="img-fluid figure-img"></p>
+<figcaption>Code Chunk Example</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/Project.png" title="Creating a New Project" class="img-fluid figure-img"></p>
-<figcaption>Creating a New Project</figcaption>
-</figure>
-</div>
-</section>
-<section id="r-script-files-myfirstrscript.r" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="r-script-files-myfirstrscript.r"><span class="header-section-number">1.3</span> R Script files (MyFirstRscript.R)</h2>
 <ul>
-<li>Entering and running code at the R command line is effective and simple. However, each time you want to execute a set of commands, you have to re-enter them at the command line. Nothing saves for later.</li>
-<li>Complex commands are particularly difficult causing you to re-entering the code to fix any errors typographical or otherwise. Fortunately, you can make a .R script file to solve this issue.</li>
-<li>A .R script is simply a text file containing a set of commands and comments. The script can be saved and used later to rerun the code. The script can also be documented with comments and edited again and again to suit your needs.<br>
-</li>
-<li>Create your first R Script file within your Project for testing purposes.
+<li>Chunk output can be customized with knitr options, arguments set in the {} of a chunk header.
 <ul>
-<li>Go to File &gt; New File &gt; R Script</li>
-<li>Save this file as MyFirstRscript.R in your project folder you just made. You should see this new file under Files like mine is in the bottom right panel. As we create new files, continue to save them into your project folder.</li>
-</ul></li>
-<li>On the .R file presented to the left, comments are added as denoted by the hashtag which you can type or push ctrl + shift + c.</li>
-<li>If you type in your console, it will not save it for later. However, if you save code in this R Script file, you can open your file at a later date to rerun your code. Also, as we move through the class, feel free to document all your notes in your .R file via # called comments. More on comments later.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/MyFirstScript.png" title="Screenshot of MyFirstScript.R" class="img-fluid figure-img"></p>
-<figcaption>Screenshot of MyFirstScript.R</figcaption>
-</figure>
-</div>
-</section>
-<section id="using-r-more-effectively" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="using-r-more-effectively"><span class="header-section-number">1.4</span> Using R More Effectively</h2>
-<section id="setting-options-to-your-liking" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="setting-options-to-your-liking"><span class="header-section-number">1.4.1</span> Setting Options to Your Liking</h3>
-<ul>
-<li>You have many options to customize R Studio.</li>
-<li>Go to Tools &gt; Global Options to see the list of options for you to customize.</li>
-<li>A few are listed below.
-<ul>
-<li>You can set your general information including your default working directory (when not in a project).</li>
-<li>You can customize the appearance to a theme that accommodates your learning style and visual preferences.</li>
-<li>You can turn on a spell check.</li>
+<li>include = FALSE prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.</li>
+<li>echo = FALSE prevents code, but not the results from appearing in the finished file. This is a useful way to embed figures.</li>
+<li>message = FALSE prevents messages that are generated by code from appearing in the finished file.</li>
+<li>warning = FALSE prevents warnings that are generated by code from appearing in the finished.</li>
+<li>fig.cap = “…” adds a caption to graphical results.</li>
 </ul></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Pictures/Ch0/Options.png" title="Tools > Global Options.R" class="img-fluid figure-img"></p>
-<figcaption>Tools &gt; Global Options.R</figcaption>
+<p><img src="Pictures/RMD/message.png" title="Arguments of Chunk" class="img-fluid figure-img"></p>
+<figcaption>Arguments of Chunk</figcaption>
 </figure>
 </div>
 </section>
-<section id="quick-keys-in-r" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="quick-keys-in-r"><span class="header-section-number">1.4.2</span> Quick Keys in R</h3>
+<section id="output-formats" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="output-formats"><span class="header-section-number">7.4</span> Output Formats</h2>
 <ul>
-<li>There are a lot of quick keys in R to make you able to use it faster and more effectively. You may look over these and try on your own.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/QuickKeys1.png" title="Console Quick Keys" class="img-fluid figure-img"></p>
-<figcaption>Console Quick Keys</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/QuickKeys2.png" title="Source Quick Keys" class="img-fluid figure-img"></p>
-<figcaption>Source Quick Keys</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/QuickKeys3.png" title="Editing Quick Keys" class="img-fluid figure-img"></p>
-<figcaption>Editing Quick Keys</figcaption>
-</figure>
-</div>
-</section>
-<section id="getting-help-in-r" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="getting-help-in-r"><span class="header-section-number">1.4.3</span> Getting Help in R</h3>
-<ul>
-<li>There are lots of ways to get help in R.</li>
-<li>In R, use the help search box to find information on a function, parameter, or package.
-<ul>
-<li>?mean</li>
-<li>help.search(‘swirl’)</li>
-<li>help(package = ‘MASS’)</li>
-<li>?install.packages</li>
-</ul></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Pictures/Ch0/Help.png" title="Getting Help" class="img-fluid figure-img"></p>
-<figcaption>Getting Help</figcaption>
-</figure>
-</div>
-<ul>
-<li>You should try to look up the tapply command to see what it does.
-<ul>
-<li>Use ?tapply in your .R file to pull up tapply() command or type tapply in the Help box. * Formally, you should see that the command applies a function to each cell of a ragged array, that is to each (non-empty) group of values given by a unique combination of the levels of certain factors. This means that the command does some math calculation (mean, sum, etc.) on a continuous variable after dividing the data by group.</li>
-</ul></li>
-<li>The format is tapply(x, index, and fun), where x is a continuous variable, index is a grouping variable or factor, and fun is a function like mean.</li>
-<li>More on that function later in the lesson.</li>
+<li>RMD files can be rendered into various output formats including HTML, PDF, and Word documents. The output format is specified in the YAML header. To generate the final document, you use the knit function in RStudio or call rmarkdown::render() in your R script.</li>
 </ul>
 </section>
-</section>
-<section id="accessing-data-files-for-the-book" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="accessing-data-files-for-the-book"><span class="header-section-number">1.5</span> Accessing Data Files for the Book</h2>
+<section id="visualization-and-plots" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="visualization-and-plots"><span class="header-section-number">7.5</span> Visualization and Plots</h2>
 <ul>
-<li>To download the data sets, go to our Blackboard datasets page and download them to your computer. This will be available on the first day of bootcamp.</li>
-<li>Once downloaded, unzip the file by right-clicking and selecting “Extract All”, and then move the subfolder named data to your working directory.</li>
-<li>In the example below, my project folder for the class is called BUAD502 and the subfolder that contains all the data files is called data. You can put your folder anywhere on the hard drive of your computer, but do not download it to places on the cloud like OneDrive.</li>
+<li>RMD files can include visualizations and plots. For example, you can create and embed a plot using the ggplot2 package</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
+<p>library(ggplot2) ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="Pictures/Ch0/BookFiles.png" title="Saving Our Book Files Into a &quot;data&quot; Folder in Your Working Directory" class="img-fluid figure-img"></p>
-<figcaption>Saving Our Book Files Into a “data” Folder in Your Working Directory</figcaption>
+<p><img src="rmarkdown_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
-<ul>
-<li>We will use a number of data files plus more for homework/projects, so be prepared to use these files throughout the class.</li>
-</ul>
-</section>
-<section id="summary" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">1.6</span> Summary</h2>
-<ul>
-<li>At the end of this section, you should have downloaded and browsed R in RStudio. You should have looked at the quick keys in R to make editing your R documents easier. You should set up a project folder for the course where you want to on your computer, and made your first .R script file located in that project folder. You should have tried a line of code or two as presented. Finally, you should have looked around the RStudio environment and found the help tab.</li>
-</ul>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -866,10 +754,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./probability.html" class="pagination-link" aria-label="Probability and Probability Distributions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probability and Probability Distributions</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./introR.html" class="pagination-link" aria-label="Introduction to R and RStudio">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Introduction to R and RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
