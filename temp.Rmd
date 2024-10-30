@@ -1,0 +1,24 @@
+---
+title: "Untitled"
+output: slidy_presentation
+date: "2024-10-30"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+$
+\begin{array}{|c|c|c|c|}
+\hline
+\textbf{Context} & \textbf{Formula} & \textbf{Interpretation} & \textbf{pnorm Function Usage} \\
+\hline
+\text{Standardizing individual data points} & \frac{x - \text{mean}(x)}{\text{sd}(x)} & \text{Z-score for individual values} & \text{pnorm}(x, \text{mean}, \text{sd}) \\
+\hline
+\text{Standardizing the sample mean} & \frac{x - \text{mean}(x)}{\text{sd}(x) / \sqrt{n}} & \text{Used for hypothesis tests of means} & \text{pnorm}(x, \text{mean}, \text{se}) \\
+\hline
+\text{Standardizing a sample proportion} & \frac{\hat{p} - p}{\sqrt{\frac{p(1 - p)}{n}}} & \text{Used for hypothesis tests of proportions} & \text{pnorm}(\hat{p}, p, \sqrt{\frac{p(1 - p)}{n}}) \\
+\hline
+\end{array}
+$
