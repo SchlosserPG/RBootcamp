@@ -1,6 +1,11 @@
-# Introduction to R and RStudio
+---
+title: "Introduction to R and RStudio"
+author: ""
+date: "2024-08-09"
+output: html_document
+---
 
--   The goal of this lesson is to introduce you to R and RStudio while teaching you how to perform data preparation using these tools. In this part, we will go over forming an understanding of statistics, learning about observations and variables, and being able to move around and get comfortable with R. I will also teach you how use and load data. 
+-   The goal of this lesson is to introduce you to R and RStudio while teaching you how to perform data preparation using these tools. In this part, we will go over forming an understanding of statistics, learning about observations and variables, and being able to move around and get comfortable with R. I will also teach you how use and load data.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRUE, message=FALSE, warning=FALSE)
@@ -9,15 +14,16 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 ```{r tidy=FALSE}
 ####################################
 # Project name: Introduction to R and RStudio
-# Data used: mtcars from R, Insurance from the MASS library, gig.csv and gss2016.csv, 
+# Data used: mtcars from R, Insurance from the MASS library and gss.2016 dataset 
 # Libraries used: MASS, tidyverse, dplyr (part of tidyverse)
 ####################################
 ```
 
+
 ### At a Glance
 
 -   In order to succeed in this lesson, you will need to start by having both R and RStudio downloaded. Then, the only way to learn R is to use it in various ways and to practice as much as you can.
--   It is also important to note that this is a statistics class and that R is a statistical computing software. Because of that, we need to not only pay attention to what we are typing in, but understand why we are typing it in the ways suggested, and also how we could do it differently to get similar if not the same results. 
+-   It is also important to note that this is a statistics class and that R is a statistical computing software. Because of that, we need to not only pay attention to what we are typing in, but understand why we are typing it in the ways suggested, and also how we could do it differently to get similar if not the same results.
 
 ### Lesson Objectives
 
@@ -45,6 +51,7 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
     -   Growing availability of vast amounts of data.
     -   Improved computational power.
     -   Development of sophisticated algorithms.
+    -   The rise of Generative AI.
 
 ### Two Main Branches of Statistics
 
@@ -59,51 +66,7 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 
 ## Setting up R
 
-### Why R?
-
--   R is a very sophisticated statistical software that allows you to enter commands one-at-a-time, or write scripts using the R language.
-
--   Easily installed, state-of-the-art, and it is free and open source and supported by a well-established R Community.
-
--   R can be used with RStudio, which is a graphical user interface that allows you to do the following:
-
-    -   write, edit, and execute code;
-    -   generate, view, and store plots;
-    -   manage files, objects and data frames;
-    -   integrate with version control systems.
-
--   R comes with community that helps in the development of R resources.
-
-    -   A package is developed by R users to do one specific thing or a set of related things that could store a collection of functions, data, and code.
-    -   A library is the place where the package is located on your computer.
-
--   A repository is a central location where many developed packages are located and available for download. There are 3 big repositories, but we use Comprehensive R Archive Network, or CRAN, which is R's main repository with over 18,000 packages available.
-
--   R's community is vast, and you can always seek information from the community to try to help you with a R related issue.
-
--   R is Called a Dynamically Typed Language
-
--   In R, a variable itself is not declared of any data type.
-
--   Rather it receives the data type of the R object that is assigned to it.
-
--   We can change a variable’s data type if we want, but it will inherit one based on the object assigned to it. We will learn some common ways to do this in the data preparation section.
-
-### Creating a Project for Our Class
-
--   The RStudio project file is a file that sits in the root directory, with the extension .Rproj. When your RStudio session is running through the project file (.Rproj), the current working directory points to the root folder where that .Rproj file is saved.
-    -   R projects are a type of file which function with RStudio.
-    -   They have the .Rproj file extension.
-    -   R projects are each associated with a directory.
-    -   They are useful when working with many files for one purpose, hence the name “project”
-    -   A great feature is that they “know” which files are relevant to a project, when you open the project RStudio will load those files automatically.
--   Start by creating a project for our class. Projects are great because they aid in your organization technique.
--   You will find that some professors are not insistent on making a project for their class, but it is helpful to still do to organize your materials. You will have a lot of code in this program!
--   To create a project click $File > New Project - New Directory > New Project$ and save your project to a place on your computer (not the cloud).
-
-![CreateProject](Pictures/Ch0/CreateProject.png "Screenshot of Create Project in R Studio") ![Creating a New Project](Pictures/Ch0/Project.png "Creating a New Project")
-
-## Using R Script Files
+## R Script Files
 
 -   Using R Script Files:
     -   A .R script is simply a text file containing a set of commands and comments. The script can be saved and used later to rerun the code. The script can also be documented with comments and edited again and again to suit your needs.
@@ -111,7 +74,7 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
     -   Entering and running code at the R command line is effective and simple. However, each time you want to execute a set of commands, you must re-enter them at the command line. Nothing saves for later.
 -   Complex commands are particularly difficult causing you to re-entering the code to fix any errors typographical or otherwise.R script files help to solve this issue.
 
-### Create a New R Script File: Chapter1.R
+### Create a New R Script File
 
 -   To save your notes from today's lecture, create a .R file named Chapter1.R and save it to your project file you made in the last class.
 -   There are a couple of parts to this chapter, and we can add code from today's chapter in one file so that our code is stacked nicely together.\
@@ -119,34 +82,133 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 
 ![Screenshot of R Environment](Pictures/Ch1/RScript.png "Screenshot of R Environment")
 
-### Using a Prolog
+# Project Files
 
--   We should include a prolog to introduce each R Script File during the course.
--   A prolog is a set of comments at the top of a code file that provides information about what is in the file.
--   Including a prolog is considered coding best practice.
--   It also names the files and resources used that facilitates identification.
--   An informal prolog is below:
+-   A RStudio project is a way to organize your work by creating a self-contained environment for your files, scripts, and outputs.
+    -   The RStudio project file sits in the root directory, with the extension .Rproj.
+    -   When your RStudio session is running through the project file (.Rproj), the current working directory points to the root folder where that .Rproj file is saved.
+-   Key Features
+    -   Keeps all related files in one folder.
+    -   Automatically sets the working directory to the project folder.
+    -   Simplifies managing file paths ("data/myfile.csv" instead of a full path).
 
-```{r, tidy=FALSE}
-####################################
-# Project name: 
-# Project purpose: 
-# Code author name: 
-# Date last edited: 
-# Data used: 
-# Libraries used: 
-####################################
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Oe4o3xJGJgI?si=7h-tMOlRwRFDbBQT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+-   Creating a project for our class. Projects are great because they aid in your organization technique.
+-   You will find that some professors are not insistent on making a project for their class, but it is helpful to still do to organize your materials. You will have a lot of code in this program!
+-   To create a project click $File > New Project - New Directory > New Project$ and save your project to a place on your computer (not the cloud).
+
+![CreateProject](Pictures/Ch0/CreateProject.png "Screenshot of Create Project in R Studio")
+
+# R Script files
+
+-   Entering and running code at the R command line is effective and simple. However, each time you want to execute a set of commands, you have to re-enter them at the command line. Nothing saves for later.
+-   Complex commands are particularly difficult causing you to re-entering the code to fix any errors typographical or otherwise. Fortunately, you can make a .R script file to solve this issue.
+-   A .R script is simply a text file containing a set of commands and comments. The script can be saved and used later to rerun the code. The script can also be documented with comments and edited again and again to suit your needs.\
+-   Create your first R Script file within your Project for testing purposes.
+    -   Go to File \> New File \> R Script
+    -   Save this file as MyFirstRscript.R in your project folder you just made. You should see this new file under Files like mine is in the bottom right panel. As we create new files, continue to save them into your project folder.
+-   On the .R file presented to the left, comments are added as denoted by the hashtag which you can type or push ctrl + shift + c.
+-   If you type in your console, it will not save it for later. However, if you save code in this R Script file, you can open your file at a later date to rerun your code. Also, as we move through the class, feel free to document all your notes in your .R file via \# called comments. More on comments later.
+
+![Screenshot of MyFirstScript.R](Pictures/Ch0/MyFirstScript.png "Screenshot of MyFirstScript.R")
+
+# Using R More Effectively
+
+## Customizing RStudio
+
+-   Customizing RStudio through global options allows you to create a coding environment that aligns with your workflow and personal preferences. By tailoring settings such as appearance, pane layout, and editor behavior, you can improve productivity, enhance readability, and streamline your data analysis process. These adjustments not only make coding more efficient but also help you avoid common pitfalls, like workspace clutter or inconsistent settings. RStudio is highly flexible, so take the time to explore and experiment with its options to make the platform work best for you.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cmg2q-mG1iI?si=arnYLqFAIH6oZ30U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+-   What are Global Options
+    -   Settings in RStudio that let you personalize the environment to suit your workflow.
+-   Why change global options?
+    -   Improve productivity by tailoring RStudio to your preferences.
+    -   Enhance readability and usability of code and outputs.
+    -   Create a consistent environment across projects.
+-   Where to Find Global Options:
+    -   Go to Tools \> Global Options in the RStudio menu.
+-   Key Settings to Adjust
+    -   Global Options \> General: You can set your general information including your default working directory (when not in a project).Set your R Version if appropriate.
+    -   Global Options \> Code: Enable auto-complete, or soft-wrap for easier coding.
+    -   Global Options \> Appearance: You can customize the appearance to a theme that accommodates your learning style and visual preferences.
+    -   Global Options \> Spelling: You can turn on a spell check.
+
+![Tools \> Global Options.R](Pictures/Ch0/Options.png "Tools > Global Options.R")
+
+## Quick Keys in R
+
+-   There are a lot of quick keys in R to make you able to use it faster and more effectively. You may look over these and try on your own.
+
+![Console Quick Keys](Pictures/Ch0/QuickKeys1.png "Console Quick Keys")
+
+![Source Quick Keys](Pictures/Ch0/QuickKeys2.png "Source Quick Keys")
+
+![Editing Quick Keys](Pictures/Ch0/QuickKeys3.png "Editing Quick Keys")
+
+## Getting Help in R
+
+-   There are lots of ways to get help in R.
+-   In R, use the help search box to find information on a function, parameter, or package.
+    -   ?mean
+    -   help.search(‘swirl’)
+    -   help(package = ‘MASS’)
+    -   ?install.packages
+
+![Getting Help](Pictures/Ch0/Help.png "Getting Help")
+
+-   You should try to look up the tapply command to see what it does.
+    -   Use ?tapply in your .R file to pull up tapply() command or type tapply in the Help box. \* Formally, you should see that the command applies a function to each cell of a ragged array, that is to each (non-empty) group of values given by a unique combination of the levels of certain factors. This means that the command does some math calculation (mean, sum, etc.) on a continuous variable after dividing the data by group.
+-   The format is tapply(x, index, and fun), where x is a continuous variable, index is a grouping variable or factor, and fun is a function like mean.
+-   More on that function later in the first lessons.
+
+# Accessing Data Files for the Course
+
+-   To download the data sets, go to our Blackboard page and download them to your computer.
+-   Once downloaded, unzip the file by right-clicking and selecting "Extract All", and then move the subfolder named data to your working directory.
+-   In the example below, my project folder for the class is called BUAD502 and the subfolder that contains all the data files is called data. You can put your folder anywhere on the hard drive of your computer, but do not download it to places on the cloud like OneDrive.
+
+![Saving Our Book Files Into a "data" Folder in Your Working Directory](Pictures/Ch0/BookFiles.png "Saving Our Book Files Into a "data" Folder in Your Working Directory")
+
+-   We will use a number of data files plus more for homework/projects, so be prepared to use these files throughout the class.
+
+
+# Using R
+
+## Text in R
+
+### Comments
+
+-   Use comments to organize and explain your code in R scripts by including 1 or more than 1 hashtag.
+-   Aim to write clear, self-explanatory code that minimizes the need for excessive comments.
+-   Add helpful comments where necessary to ensure anyone, including your future self, can understand and run the code.
+-   If something doesn’t work, avoid deleting it immediately. Instead, comment it out while troubleshooting or exploring alternatives.
+-   Essentially, we add comments to our code to document our work and add notes to our self or to others.
+
+```{r}
+# This is a comment for documentation or annotation
 ```
 
--   On your R Script File, add your own prolog following the template as shown.
--   I like to add a line for *Data used* and *Libraries used* so we know what all we used in the script.
+-   Add the code above to your R file and run each line using Ctl + Enter (PC) or Cmd + Return (MAC) or select all lines and click Run.
+-   Take note that nothing prints in the console after running a comment.
+
+### A Prolog
+
+-   A prolog is a set of comments at the top of a code file that provides information about what is in the file. It also names the files and resources used that facilitates identification. Including a prolog is considered coding best practice.
+-   On your own R Script File, add your own prolog following the template as shown.
+-   An informal prolog is below:
 
 ```{r, tidy=FALSE}
 
 ####################################
 # Project name: Chapter 1
 # Project purpose: To create an R script file to learn about R. 
-# Code author name: Pamela Schlosser
+# Code author name: [Enter Your Name]
 # Date last edited: [Enter Date Here]
 # Data used: NA
 # Libraries used: NA
@@ -156,9 +218,12 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 
 -   Then, as we work through our .R script and add data files or libraries to our code, we go back and edit the prolog.
 
-### R Handles Text in Multiple Ways
+![Chapter 1 R File](Pictures/Ch1/Chapter1Start.png "Chapter 1 .R File")
 
--   R can generally use single quotes or double quotes when marking text. However, if you use a single quote to start, use a single quote to end. The same for double quotes - ensure the pairing is the same quote type.
+### String
+
+-   In R, a *string* is a sequence of characters enclosed in quotes, used to represent text data.
+-   R accepts single quotes or double quotes when marking a *string*. However, if you use a single quote to start, use a single quote to end. The same for double quotes - ensure the pairing is the same quote type.
 -   You sometimes need to be careful with nested quotes, but generally it does not matter which you use.
 
 ```{r}
@@ -167,26 +232,7 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 "This is also a string"
 ```
 
--   We can also add comments to our code to document our work and add notes to our self or to others.
-
-```{r}
-# This is a comment for documentation or annotation
-```
-
--   Add the code above to your R file and run each line using Ctl + Enter or select all lines and click Run.
--   Take note that nothing prints in the console after running a comment.
-
-![Chapter 1 R File](Pictures/Ch1/Chapter1Start.png "Chapter 1 .R File")
-
-### Using Comments
-
--   We use comments to organize and explain code in our R Script file.
--   Be sure to write clear code that does not need a lot of comments.
--   Include useful comments where needed so that anyone (including yourself in the future) can run and understand your code.
--   If something does not work, don't delete it yet. Instead, comment it out while you troubleshoot it or to try different alternatives.
--   Notice the prolog above is in comments.
-
-### Note on R Markdown
+## Note on R Markdown
 
 -   These files were formatted with RMarkdown. RMarkdown is a simple formatting syntax for authoring documents of a variety of types, including PowerPoint and html files.
 -   On the document, RMarkdown prints the command and then follows the command with the output after 2 hashtags.
@@ -194,7 +240,18 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 
 ![Reading our HTML file](Pictures/Ch1/ReadHTML.png "Reading our HTML file")
 
-### R is an Interactive Calculator
+## Running Commands
+
+-   There are a few ways to run commands via your .R file.
+    -   You can click Ctr + Enter on each line (Cmd + Return on a Mac).
+    -   You can select all the lines you want to run and select Ctr + Enter (Cmd + Return on a Mac).
+    -   You can select all the lines you want to run and select the run button as shown in the Figure.
+
+![Run Code](Pictures/Ch1/Run.png "Run Code")
+
+-   Now that I have asked you to add a couple lines of code, after this point, when R code is shown on this file, you should add it to your .R script file along with any notes you want. I won't explicitly say - "add this code."
+
+## R is an Interactive Calculator
 
 -   An important facet of R is that it should serve as your sole calculator.
 -   Try these commands in your .R file by typing them in and clicking Ctr + Enter on each line.
@@ -214,27 +271,32 @@ knitr::opts_chunk$set(echo=TRUE, tidy.opts = list(width.cutoff = 70), tidy = TRU
 -   Note that modulo and integer division have the same priority level as multiplication and division, where modulo is just the remainder.
 
 ```{r}
-print(2 + 3 * 5 - 7^2 %% 4 + (5 / 2))
+2 + 3 * 5 - 7^2 %% 4 + (5 / 2)
+
 5 / 2    #parentheses: = 2.5
+2 + 3 * 5 - 7^2 %% 4 + 2.5
+
 7^2      #exponent:= 49
+2 + 3 * 5 - 49 %% 4 + 2.5
+
 3 * 5    #multiplication: = 15
-17 %% 4  #modulo: = 1
-17 %/% 4  #integer division: = 4
+2 + 15 - 49 %% 4 + 2.5
+
+
+49 %% 4  #modulo: = 1 -- 49/4 is 48.25, so 1/4 or 1 is the remainder. 
+
+#The rest of the equation goes in order from left to right. 
+2 + 15 - 1 + 2.5
+
 2 + 15   #addition: = 17
 17 - 1   #subtraction: = 16
 16 + 2.5 #addition: = 18.5
+
+
+
+##An example of integer division is below
+49 %/% 4  #integer division: = 12 or 49/4 is 12.25, so the whole number is 12.  
 ```
-
-### Running Commands
-
--   There are a few ways to run commands via your .R file.
-    -   You can click Ctr + Enter on each line.
-    -   You can select all the lines you want to run and select Ctr + Enter.
-    -   You can select all the lines you want to run and select the run button as shown in the Figure.
-
-![Run Code](Pictures/Ch1/Run.png "Run Code")
-
--   Now that I have asked you to add a couple lines of code, after this point, when R code is shown on this file, you should add it to your .R script file along with any notes you want. I won't explicitly say - "add this code."
 
 ## Observations and Variables
 
@@ -268,7 +330,7 @@ nrow(vote)
 dim(vote)
 ```
 
-### The Assignment Operator in Creating Objects
+## Creating Objects
 
 -   Entering and Storing Variables in R requires you to make an assignment.
     -   We use the assignment operator '\<-' to assign a value or expression to a variable.
@@ -425,6 +487,7 @@ seq(0,30)
 y <- 10:20
 sort(y)
 sort(y, decreasing=FALSE)
+
 ```
 
 ## Saving
@@ -638,7 +701,45 @@ head(Insurance$Claims) #lists the first 6 Claims in the Insurance dataset.
 sd(Insurance$Claims) #provides the standard deviation of all Claims in the Insurance dataset.
 ```
 
-#### Setting up a Working Directory
+# Working Directories
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Hem4uoChTfU?si=y6maq2PDItpJ-ufL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+-   In R, when working with data files stored on your computer, it's important to understand the difference between absolute and relative file paths. An **absolute reference** gives the complete path to the file, starting from the root directory. This path is specific to your system, and it doesn't change regardless of where the R script is located. For example, on a Windows machine, you might use something like `read.csv("C:/Users/username/Documents/data.csv")`. This path will always point to the same file, but it can make your code less portable since it only works on your machine or if others have the exact same file structure.
+
+-   On the other hand, a **relative reference** specifies the file's path relative to the location of your R script or working directory. It is more flexible because it assumes the file is located in a directory relative to the current project or script. For example, if your script and data file are in the same folder, you could use `read.csv("data.csv")`. If the file is in a subdirectory, you would reference it relatively like `read.csv("data/data.csv")`. Relative paths make your code more portable and easier to share since it will work as long as the folder structure remains consistent.
+
+-   Using relative paths is often a best practice, especially in collaborative projects or when sharing code. You can check your current working directory in R with `getwd()` and set it with `setwd()`.
+
+## Absolute File Paths
+
+-   Absolute vs. Relative Links
+-   An absolute file path provides the complete location of a file, starting from the root directory of your computer.
+    -   Always points to the same file.
+    -   Independent of the script’s location.
+    -   Example: `read.csv("C:/Users/username/Documents/data.csv")`
+-   Pro
+    -   Reliable for your system
+    -   No Ambiguity in locating files
+-   Cons
+    -   Not portable; requires the same file structure across systems.
+    -   Harder to share code with collaborators.
+
+## Relative File Paths
+
+-   A relative file path specifies the file location based on the working directory of your R project or script.
+    -   Changes based on the working directory.
+    -   Often starts from the project folder.
+    -   Example: `read.csv("data/myfile.csv")`
+-   Pros
+    -   More portable; works across systems if the project structure is consistent.
+    -   Easier collaboration when sharing code and project files.
+-   Cons
+    -   Requires setting the working directory correctly (getwd() and setwd() can help).
+
+## Setting up a Working Directory
 
 -   You should have the data files from our LMS in a data folder on your computer. Your project folder would contain that data folder.
 
@@ -658,20 +759,20 @@ getwd() #Alerts you to what folder you are currently set to as your working dire
 
 ![Setting Your Working Directory](Pictures/Ch1/WorkingDir.png "Setting Your Working Directory")
 
-#### Reading in Data from .csv
+##Reading in Data from .csv
 
 -   Reading in a .csv file is extremely popular way to read in data.
 -   There are a few functions to read in .csv files. And these functions would change based on the file type you are importing.
 
-##### read.csv() function
+### read.csv() function
 
-```         
- + Extremely popular way to read in data.
- + read.csv() is a base R function that comes built-in with R: No library necessary
-```
+-   Extremely popular way to read in data.
 
--   All your datasets should be in a data folder in your working directory so that you and I have the same working directory.
--   Structure of function *datasetName \<- read.csv(“data/dataset.csv”)*
+-   read.csv() is a base R function that comes built-in with R: No library necessary
+
+-   All your datasets should be in a data folder in your working directory so that you and I have the same working directory. This creates a relative path to our working directory.
+
+-   The structure of the function is *datasetName \<- read.csv(“data/dataset.csv”).*
 
 ```{r}
 gss.2016 <- read.csv(file = "data/gss2016.csv")
@@ -683,12 +784,12 @@ summary(object = gss.2016)
 summary(gss.2016) 
 ```
 
-#### Using tidyverse to load data
-
-##### read_csv function
+## read_csv function
 
 -   read_csv() is a function from the readr package, which is part of the tidyverse ecosystem.
 -   read_csv() is generally faster than read.csv() as it's optimized for speed, making it more efficient, particularly for large datasets.
+-   In R, both `read.csv()` and `read_csv()` are used to read CSV files, but they come from different packages and have important differences. `read.csv()` is part of base R and is widely used for loading CSV files into data frames, as in `data <- read.csv("data/data.csv")`. It can be slower with large datasets and automatically converts strings to factors unless `stringsAsFactors = FALSE`.
+-   `read_csv()`, from the **readr** package in the tidyverse, is faster and better suited for large datasets. You'd use it like `data <- readr::read_csv("data/data.csv")`. It doesn't convert strings to factors by default and provides clearer error messages.`read_csv()` is often preferred for performance and better handling of data types, especially in larger datasets or tidyverse projects.
 
 ```{r, message=FALSE}
 #install.packages(tidyverse) ## Only need to install one time on your computer. #install.packages links have been commented out during processing of RMarkdown. 
@@ -701,10 +802,13 @@ library(tidyverse)
 gss.2016b <- read_csv(file = "data/gss2016.csv")
 ```
 
-### Summarize Data
+# Summarize Data
+
+-   In R, summary() and summarize() serve different purposes. summary() is part of base R and gives a quick overview of data, returning descriptive statistics for each column. For example, summary(mtcars) provides the min, max, median, and mean for numeric columns and counts for factors. It’s useful for a broad snapshot of your dataset.
+
+-   In contrast, summarize() (or summarise()) is from the dplyr package and allows for custom summaries. For instance, mtcars %\>% summarize(avg_mpg = mean(mpg), max_hp = max(hp)) returns the average miles per gallon and the maximum horsepower. It’s more flexible and is often used with group_by() for grouped calculations. In conclusion, summary() gives automatic overviews, while summarize() is better for tailored summaries.
 
 -   Use the summary() function to examine the contents of the file.
--   The summary() function is part of base R and does not require a package.
 
 ```{r}
 summary(object = gss.2016) 
@@ -716,7 +820,7 @@ summary(object = gss.2016)
 summary(gss.2016)
 ```
 
-#### Explicit Use of Libraries
+# Explicit Use of Libraries
 
 -   You can activate a library one time using library::function() format
 
@@ -748,6 +852,128 @@ summary(ChickWeight)
 tapply(ChickWeight$weight,ChickWeight$Diet, mean)
 ```
 
-## Summary
+
+# Introduction to RMarkdown
+
+-   R Markdown (RMD) files are a versatile format that combines plain text, code, and output to create dynamic and reproducible documents.
+-   Benefits of Using RMD Files:
+    -   Reproducibility: Combining code and output ensures that the document is reproducible. Any changes in the data or analysis can be quickly updated.
+    -   Integration: RMD files seamlessly integrate with R, allowing you to run and display results from your analysis within the same document.
+    -   Flexibility: You can produce various types of reports, including static documents and dynamic documents.
+    -   Collaboration: Being that RMD files are plain text, they are easy to share and version control with tools like Git.
+-   RMD files have many options, but generally are composed of the following:
+    -   yaml Header
+    -   markdown Text
+    -   Code Chunks
+    -   Output Formats
+    -   Visualization and Plots
+
+## yaml Header
+
+-   The YAML header is located at the beginning of the RMD file and contains metadata about the document, such as the title, author, date, and output format. Here is an example of a YAML header:
+
+![YAML Header Example](Pictures/Ch0/ymlHeader.png "YAML Header Example")
+
+## markdown Text
+
+-   Markdown is a lightweight markup language with plain text formatting syntax. In an RMD file, you use Markdown to format the text, create lists, headers, links, and more. For example:
+
+![Styles Example](Pictures/RMD/markdownStyles.png "Styles")
+
+## Code Chunks
+
+-   Code chunks allow you to embed R (or other languages) code within the document. These chunks are executed when the document is rendered, and their output is included in the final document. Code chunks are defined with triple backticks and the language, like this:
+
+![Code Chunk Example](Pictures/RMD/codechunk.png "Code Chunk")
+
+-   Chunk output can be customized with knitr options, arguments set in the {} of a chunk header.
+    -   include = FALSE prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.
+    -   echo = FALSE prevents code, but not the results from appearing in the finished file. This is a useful way to embed figures.
+    -   message = FALSE prevents messages that are generated by code from appearing in the finished file.
+    -   warning = FALSE prevents warnings that are generated by code from appearing in the finished.
+    -   fig.cap = "..." adds a caption to graphical results.
+
+![Arguments of Chunk](Pictures/RMD/message.png "Arguments of Chunk")
+
+## Output Formats
+
+-   RMD files can be rendered into various output formats including HTML, PDF, and Word documents. The output format is specified in the YAML header. To generate the final document, you use the knit function in RStudio or call rmarkdown::render() in your R script.
+
+## Visualization and Plots
+
+-   RMD files can include visualizations and plots. For example, you can create and embed a plot using the ggplot2 package.
+
+library(ggplot2) ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()
+
+```{r}
+
+library(ggplot2)
+ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()
+
+```
+
+
+## Packages Required for RMD to Work
+
+-   RMarkdown requires updated packages for formatting and when saving as .pdf documents, a latex extension is also required so that it properly reads the formulas in the problems. Download the .R file on Blackboard and follow the instructions provided to use RMarkdown.
+* The R file includes the following commands: 
+```{r, eval=FALSE}
+install.packages("rmarkdown")
+install.packages("knitr")
+install.packages("formatR")
+tinytex::install_tinytex()  # Select Y when/if it asks down in the console.
+```
+
+-   To use RMarkdown most efficiently, make sure your version of R is the latest by checking the website. If it is not, then take the time to get the latest version of the software. Second, make sure your files are not on the cloud, including OneDrive. If so, then decouple at least your desktop with OneDrive so you can work off the cloud. Finally, run the lines below one at a time. Once the packages are done installing, then restart your computer. Finally, open RStudio and run a blank RMarkdown file. If this file knits, then your homework should knit as long as there are no other errors.
+-   You may only need to update one of these packages. However, since they are all connected, running these commands ensures that they are all up to date with minimal troubleshooting.
+
+
+## Troubleshooting RMD FIles
+
+-   Lack of Syntax Errors:
+
+    -   R Markdown files may fail to knit without providing clear syntax error messages.
+    -   To troubleshoot, run each code chunk interactively in RStudio to identify and fix errors before knitting.
+    -   Pay attention to any warnings or messages in the console as they may indicate potential issues.
+
+-   Using Relative Links to Datasets:
+
+    -   If the .Rmd file relies on external datasets, ensure that file paths are specified using relative links.
+    -   Relative links ensure portability, allowing the .Rmd file to work on different systems without modification.
+    -   For example, if a dataset is in a subfolder, use a path like data \<- read.csv("data/my_dataset.csv").
+    -   Always verify that the dataset exists in the specified location relative to the working directory.
+
+-   Including Necessary Libraries:
+
+    -   Functions from external libraries will fail if the required libraries are not loaded.
+    -   At the beginning of the .Rmd file, load all necessary libraries explicitly using library() calls, e.g., library(tidyverse).
+    -   Ensure that all libraries used in the document are installed beforehand by running install.packages() if needed.
+    -   Loading libraries early prevents errors during knitting and avoids confusing error messages.
+
+
+
+# Using AI
+
+Use the following prompts on a generative AI, like chatGPT, to learn more about introductory topics.
+
+-   Explain the difference between descriptive and inferential statistics and provide real-life examples of both.
+
+-   What is the purpose of using R in statistical analysis, and what are the key benefits of using RStudio as a graphical interface?
+
+-   What happens when you assign the same variable multiple values in R? Write an example script that demonstrates this behavior and explains the output.
+
+-   Create a script that demonstrates how to assign values to variables using both numeric and character data types. Then, explain how these assignments are stored in RStudio’s environment.
+
+-   In R, what is the role of the assignment operator \<- Demonstrate its use by creating a few variables for numeric and character data types.
+
+-   Demonstrate how to create a vector in R using the c() function. Use this vector to perform basic operations like addition and multiplication.
+
+-   Write a script that reads a CSV file into R using read.csv(). Summarize the dataset and explain how the columns and rows are structured.
+
+-   How can you access specific columns of a data frame using the \$ operator? Provide an example using a sample dataset in R.
+
+-   Explain how to use the summary() function in R to summarize a dataset. Write a script that loads a dataset and runs summary() on it.
+
+# Summary
 
 -   In this lesson, we went over information to make sure you had some basics to really start learning R. There are a lot of ways to get the same things done in R; you have to find the way that works best for you. As we learn R, you will get used to doing things your way to be able to slice and evaluate the data to find rich information from the data sets we look at. As long as the data was handled properly, it does not matter how we reach our goal using R as long as we do it ourselves.

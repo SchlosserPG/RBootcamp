@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: docs
+include-in-header: custom-head.html
 
 book:
   title: "MSBA R Bootcamp"
@@ -13,7 +14,6 @@ book:
     - dataprep.qmd
     - dataviz.qmd
     - probability.qmd
-    - rmarkdown.qmd
     - summary.qmd
     - references.qmd
 
